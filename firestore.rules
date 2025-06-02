@@ -1,0 +1,22 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Acceso seguro a los datos de usuarios
+    match /usuarios/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    match /alimentos/{alimentoId} {
+      allow read: if true;     // Todo el mundo puede leer
+      allow write: if false;   // Nadie puede escribir
+		}
+    match /encuestas/{encuestaId} {
+      // Solo el creador puede leer y escribir
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.creadorUid;
+      
+      // Para escritura de nuevas encuestas (antes de que existan), comprueba que el UID que se va a escribir es el del usuario autenticado
+      allow create: if request.auth != null && request.resource.data.creadorUid == request.auth.uid;
+    }
+  }
+}

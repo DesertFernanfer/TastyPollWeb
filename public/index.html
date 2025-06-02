@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>TastyPoll</title>
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="stylesheet.css" />
+</head>
+<body>
+  <div id="app">
+    <h1>TastyPoll</h1>
+    <h4 id="nombre-encuesta">Encuesta</h4>
+    <h5 id="descripcion-encuesta">Descripción</h5>
+
+    <div id="filtros-wrapper"> <div id="contenedor-filtros">
+            <input type="text" id="input-Nombre" placeholder="Nombre alimento"/>
+            <button id="boton-buscar" class="button">Buscar</button>
+            <input type="email" id="input-email" placeholder="Email"/>
+
+            <label class="etiqueta">Introduce un tipo de dieta</label>
+            <select id="tipo-dieta" class="spinner">
+                <option value="OMNIVORA">Omnivora</option>
+                <option value="CARNIVORA">Carnivora</option>
+                <option value="VEGANA">Vegana</option>
+                <option value="VEGETARIANA">Vegetariana</option>
+            </select>
+
+            <label class="etiqueta">Introduce una categoria de plato</label>
+            <select id="categoria-plato" class="spinner">
+                <option value="TODOS">Todos</option>
+                <option value="ENTRADA">Entrada</option>
+                <option value="PRIMERO">Primero</option>
+                <option value="SEGUNDO">Segundo</option>
+                <option value="POSTRE">Postre</option>
+            </select>
+        </div>
+    </div>
+    <div id="lista-comidas">
+        </div>
+    <button id="boton-votar" class="button">Votar</button>
+  </div>
+
+  <script type="module" src="firebase-init.js"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
